@@ -124,12 +124,12 @@ class Heap {
       sift_up(size_-1); //sift up the recently inserted elemenet
     }
 
-    int extract_extreme(void){
+    T extract_extreme(void){
       if(size_ == 0){
         std::cout << "ERROR: Blank Heap" << std::endl;
         return -1;
       }
-      int result = data_[0];  //the max value is the head of the tree
+      T result = data_[0];  //the max value is the head of the tree
       data_[0] = data_[size_-1]; //replace head with the latest leaf
       //the next two lines are essentially pop_back
       size_--;
@@ -138,7 +138,7 @@ class Heap {
       return result;
     }
 
-    int view_extreme(void){
+    T view_extreme(void){
       if(size_ == 0){
         std::cout << "ERROR: Blank Heap" << std::endl;
         return -1;

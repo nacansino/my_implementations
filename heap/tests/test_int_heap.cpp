@@ -70,6 +70,9 @@ namespace {
     //extract max
     EXPECT_EQ(-1, my_max_heap->extract_extreme());
     EXPECT_EQ(-1, my_min_heap->extract_extreme());
+    //view extreme
+    EXPECT_EQ(-1, my_max_heap->view_extreme());
+    EXPECT_EQ(-1, my_min_heap->view_extreme());
   }
 
   TEST(IntHeap, CreateHeap) {
@@ -195,6 +198,6 @@ int main(int argc, char **argv) {
 
 /*
 Compile:
-g++ -Igoogletest-release-1.8.0/googletest/include -Isrc -pthread tests/test_max_heap.cpp src/heap.cpp googletest-release-1.8.0/libgtest.a -o tests/test_max_heap
+g++ -Igoogletest-release-1.8.0/googletest/include -Isrc -pthread tests/test_int_heap.cpp src/heap.cpp googletest-release-1.8.0/libgtest.a -o tests/test_int_heap
 
 */
