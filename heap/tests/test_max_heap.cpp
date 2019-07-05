@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "max_heap.h"
+#include "heap.hpp"
 
 namespace {
   class MaxHeapFixture : public ::testing::Test {
@@ -28,19 +28,19 @@ namespace {
       delete my_max_heap;
     }
 
-    MaxHeap *my_max_heap = new MaxHeap;
+    Heap<int> *my_max_heap = new Heap<int>(1);
   };
 
   TEST(MaxHeap, BlankHeap) {
-    MaxHeap *my_max_heap = new MaxHeap;
+    Heap<int> *my_max_heap = new Heap<int>(1);
     //check size
     EXPECT_EQ(0, my_max_heap->size());
     //extract max
-    EXPECT_EQ(-1, my_max_heap->extract_max());
+    EXPECT_EQ(-1, my_max_heap->extract_extreme());
   }
 
   TEST(MaxHeap, CreateHeap) {
-    MaxHeap *my_max_heap = new MaxHeap;
+    Heap<int> *my_max_heap = new Heap<int>(1);
     //check size
     EXPECT_EQ(0, my_max_heap->size());
     //insert an element
@@ -56,51 +56,51 @@ namespace {
     /*Make sure that this fixture has the same name as the setup class declared above*/
     EXPECT_EQ(9, my_max_heap->size()); //check size
     //Extract max #1
-    my_max_heap->print_heap();
-    EXPECT_EQ(9, my_max_heap->extract_max());
-    EXPECT_EQ(8, my_max_heap->extract_max());
-    EXPECT_EQ(6, my_max_heap->extract_max());
-    EXPECT_EQ(5, my_max_heap->extract_max());
-    EXPECT_EQ(4, my_max_heap->extract_max());
-    EXPECT_EQ(3, my_max_heap->extract_max());
-    EXPECT_EQ(2, my_max_heap->extract_max());
-    EXPECT_EQ(2, my_max_heap->extract_max());
-    EXPECT_EQ(1, my_max_heap->extract_max());
+    //my_max_heap->print_heap();
+    EXPECT_EQ(9, my_max_heap->extract_extreme());
+    EXPECT_EQ(8, my_max_heap->extract_extreme());
+    EXPECT_EQ(6, my_max_heap->extract_extreme());
+    EXPECT_EQ(5, my_max_heap->extract_extreme());
+    EXPECT_EQ(4, my_max_heap->extract_extreme());
+    EXPECT_EQ(3, my_max_heap->extract_extreme());
+    EXPECT_EQ(2, my_max_heap->extract_extreme());
+    EXPECT_EQ(2, my_max_heap->extract_extreme());
+    EXPECT_EQ(1, my_max_heap->extract_extreme());
   }
 
   TEST_F(MaxHeapFixture, ViewMax) {
     /*Make sure that this fixture has the same name as the setup class declared above*/
     EXPECT_EQ(9, my_max_heap->size()); //check size
     //View max repeatedly
-    my_max_heap->print_heap();
-    EXPECT_EQ(9, my_max_heap->view_max());
-    EXPECT_EQ(9, my_max_heap->view_max());
-    EXPECT_EQ(9, my_max_heap->view_max());
+    //my_max_heap->print_heap();
+    EXPECT_EQ(9, my_max_heap->view_extreme());
+    EXPECT_EQ(9, my_max_heap->view_extreme());
+    EXPECT_EQ(9, my_max_heap->view_extreme());
   }
 
   TEST_F(MaxHeapFixture, Insert) {
     /*Make sure that this fixture has the same name as the setup class declared above*/
     std::cout << "Heap before inserting:" << std::endl;
-    my_max_heap->print_heap();
+    //my_max_heap->print_heap();
     //Insert #1
     my_max_heap->insert(4);
     std::cout << "Heap after inserting 4:" << std::endl;
-    my_max_heap->print_heap();
+    //my_max_heap->print_heap();
     my_max_heap->insert(13);
     std::cout << "Heap after inserting 13:" << std::endl;
-    my_max_heap->print_heap();
+    //my_max_heap->print_heap();
     //Extract min#1
-    EXPECT_EQ(13, my_max_heap->extract_max());
-    EXPECT_EQ(9, my_max_heap->extract_max());
-    EXPECT_EQ(8, my_max_heap->extract_max());
-    EXPECT_EQ(6, my_max_heap->extract_max());
-    EXPECT_EQ(5, my_max_heap->extract_max());
-    EXPECT_EQ(4, my_max_heap->extract_max());
-    EXPECT_EQ(4, my_max_heap->extract_max());
-    EXPECT_EQ(3, my_max_heap->extract_max());
-    EXPECT_EQ(2, my_max_heap->extract_max());
-    EXPECT_EQ(2, my_max_heap->extract_max());
-    EXPECT_EQ(1, my_max_heap->extract_max());
+    EXPECT_EQ(13, my_max_heap->extract_extreme());
+    EXPECT_EQ(9, my_max_heap->extract_extreme());
+    EXPECT_EQ(8, my_max_heap->extract_extreme());
+    EXPECT_EQ(6, my_max_heap->extract_extreme());
+    EXPECT_EQ(5, my_max_heap->extract_extreme());
+    EXPECT_EQ(4, my_max_heap->extract_extreme());
+    EXPECT_EQ(4, my_max_heap->extract_extreme());
+    EXPECT_EQ(3, my_max_heap->extract_extreme());
+    EXPECT_EQ(2, my_max_heap->extract_extreme());
+    EXPECT_EQ(2, my_max_heap->extract_extreme());
+    EXPECT_EQ(1, my_max_heap->extract_extreme());
   }
 
 }  // namespace
@@ -112,6 +112,6 @@ int main(int argc, char **argv) {
 
 /*
 Compile:
-g++ -Igoogletest-release-1.8.0/googletest/include -Isrc -pthread tests/test_max_heap.cpp src/max_heap.cpp googletest-release-1.8.0/libgtest.a -o tests/test_max_heap
+g++ -Igoogletest-release-1.8.0/googletest/include -Isrc -pthread tests/test_max_heap.cpp src/heap.cpp googletest-release-1.8.0/libgtest.a -o tests/test_max_heap
 
 */
