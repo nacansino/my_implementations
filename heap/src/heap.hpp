@@ -1,6 +1,8 @@
 #ifndef HEAP
 #define HEAP
 
+//#define HEAP_EXCEPTION_BLANK string("Element requested during blank heap condition.")
+
 #include <iostream>
 #include <algorithm>
 #include <assert.h>
@@ -171,8 +173,7 @@ template <typename T>
 T Heap<T>::pop(){
   /*This function extracts the first element of the heap.*/
   if(size_ == 0){
-    std::cout << "ERROR: Blank Heap" << std::endl;
-    return -1;
+    throw "Element requested during blank heap condition.";
   }
   T result = data_[0];  //the max value is the head of the tree
   data_[0] = data_[size_-1]; //replace head with the latest leaf
@@ -187,8 +188,7 @@ template <typename T>
 T Heap<T>::front(){
   /*This function displays the first element of the heap.*/
   if(size_ == 0){
-    std::cout << "ERROR: Blank Heap" << std::endl;
-    return -1;
+    throw "Element requested during blank heap condition.";
   }
   return data_[0];
 }

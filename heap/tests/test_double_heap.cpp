@@ -61,21 +61,21 @@ namespace {
     Heap<double> *my_max_heap = new Heap<double>(1);
   };
 
-  TEST(IntHeap, BlankHeap) {
+  TEST(DoubleHeap, BlankHeap) {
     Heap<double> *my_max_heap = new Heap<double>(1);
     Heap<double> *my_min_heap = new Heap<double>(0);
     //check size
     EXPECT_EQ(0, my_max_heap->size());
     EXPECT_EQ(0, my_min_heap->size());
     //extract extreme
-    EXPECT_EQ(-1.0, my_max_heap->pop());
-    EXPECT_EQ(-1.0, my_min_heap->pop());
+    EXPECT_ANY_THROW(my_max_heap->pop());
+    EXPECT_ANY_THROW(my_min_heap->pop());
     //view extreme
-    EXPECT_EQ(-1.0, my_max_heap->front());
-    EXPECT_EQ(-1.0, my_min_heap->front());
+    EXPECT_ANY_THROW(my_max_heap->front());
+    EXPECT_ANY_THROW(my_min_heap->front());
   }
 
-  TEST(IntHeap, CreateHeap) {
+  TEST(DoubleHeap, CreateHeap) {
     Heap<double> *my_max_heap = new Heap<double>(1);
     //check size
     EXPECT_EQ(0, my_max_heap->size());

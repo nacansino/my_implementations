@@ -67,12 +67,12 @@ namespace {
     //check size
     EXPECT_EQ(0, my_max_heap->size());
     EXPECT_EQ(0, my_min_heap->size());
-    //extract max
-    EXPECT_EQ(-1, my_max_heap->pop());
-    EXPECT_EQ(-1, my_min_heap->pop());
+    //extract extreme
+    EXPECT_ANY_THROW(my_max_heap->pop());
+    EXPECT_ANY_THROW(my_min_heap->pop());
     //view extreme
-    EXPECT_EQ(-1, my_max_heap->front());
-    EXPECT_EQ(-1, my_min_heap->front());
+    EXPECT_ANY_THROW(my_max_heap->front());
+    EXPECT_ANY_THROW(my_min_heap->front());
   }
 
   TEST(IntHeap, CreateHeap) {
