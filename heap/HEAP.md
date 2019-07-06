@@ -1,5 +1,5 @@
 # Generic Heap
-This is a Heap data structure that supports abstract data types/user data types.
+This is a Heap data structure in C++ that supports abstract data types/user data types.
 
 -  This is a part of the my_implementations repo: https://github.com/nacansino/my_implementations
 
@@ -29,7 +29,6 @@ Heap<int> *my_min_heap = new Heap<int>(0);
 Heap<int> *my_max_heap = new Heap<int>(1);
 ```
 ### push(), front(), and pop() an integer max heap
-- note that you can set the argument to any non-zero integer
 ```cpp
 
 #include <iostream>
@@ -67,8 +66,8 @@ int main(){
   std::cout << my_max_heap->pop() << std::endl;
 }
 ```
+- Output:
 ```
-Output:
   Size of heap: 6
   3 3 3
   3 2 1 0 -5 -8
