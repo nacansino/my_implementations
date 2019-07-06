@@ -15,15 +15,15 @@ namespace {
     }
 
     void SetUp() override {
-      my_min_heap->insert(1);
-      my_min_heap->insert(2);
-      my_min_heap->insert(2);
-      my_min_heap->insert(3);
-      my_min_heap->insert(4);
-      my_min_heap->insert(5);
-      my_min_heap->insert(6);
-      my_min_heap->insert(8);
-      my_min_heap->insert(9);
+      my_min_heap->push(1);
+      my_min_heap->push(2);
+      my_min_heap->push(2);
+      my_min_heap->push(3);
+      my_min_heap->push(4);
+      my_min_heap->push(5);
+      my_min_heap->push(6);
+      my_min_heap->push(8);
+      my_min_heap->push(9);
     }
     void TearDown() override {
       delete my_min_heap;
@@ -43,15 +43,15 @@ namespace {
     }
 
     void SetUp() override {
-      my_max_heap->insert(1);
-      my_max_heap->insert(2);
-      my_max_heap->insert(2);
-      my_max_heap->insert(3);
-      my_max_heap->insert(4);
-      my_max_heap->insert(5);
-      my_max_heap->insert(6);
-      my_max_heap->insert(8);
-      my_max_heap->insert(9);
+      my_max_heap->push(1);
+      my_max_heap->push(2);
+      my_max_heap->push(2);
+      my_max_heap->push(3);
+      my_max_heap->push(4);
+      my_max_heap->push(5);
+      my_max_heap->push(6);
+      my_max_heap->push(8);
+      my_max_heap->push(9);
     }
 
     void TearDown() override {
@@ -68,11 +68,11 @@ namespace {
     EXPECT_EQ(0, my_max_heap->size());
     EXPECT_EQ(0, my_min_heap->size());
     //extract max
-    EXPECT_EQ(-1, my_max_heap->extract_extreme());
-    EXPECT_EQ(-1, my_min_heap->extract_extreme());
+    EXPECT_EQ(-1, my_max_heap->pop());
+    EXPECT_EQ(-1, my_min_heap->pop());
     //view extreme
-    EXPECT_EQ(-1, my_max_heap->view_extreme());
-    EXPECT_EQ(-1, my_min_heap->view_extreme());
+    EXPECT_EQ(-1, my_max_heap->front());
+    EXPECT_EQ(-1, my_min_heap->front());
   }
 
   TEST(IntHeap, CreateHeap) {
@@ -80,11 +80,11 @@ namespace {
     //check size
     EXPECT_EQ(0, my_max_heap->size());
     //insert an element
-    my_max_heap->insert(5);
+    my_max_heap->push(5);
     EXPECT_EQ(1, my_max_heap->size());
     //insert two more
-    my_max_heap->insert(3);
-    my_max_heap->insert(4);
+    my_max_heap->push(3);
+    my_max_heap->push(4);
     EXPECT_EQ(3, my_max_heap->size());
   }
 
@@ -93,15 +93,15 @@ namespace {
     EXPECT_EQ(9, my_max_heap->size()); //check size
     //Extract max #1
     //my_max_heap->print_heap();
-    EXPECT_EQ(9, my_max_heap->extract_extreme());
-    EXPECT_EQ(8, my_max_heap->extract_extreme());
-    EXPECT_EQ(6, my_max_heap->extract_extreme());
-    EXPECT_EQ(5, my_max_heap->extract_extreme());
-    EXPECT_EQ(4, my_max_heap->extract_extreme());
-    EXPECT_EQ(3, my_max_heap->extract_extreme());
-    EXPECT_EQ(2, my_max_heap->extract_extreme());
-    EXPECT_EQ(2, my_max_heap->extract_extreme());
-    EXPECT_EQ(1, my_max_heap->extract_extreme());
+    EXPECT_EQ(9, my_max_heap->pop());
+    EXPECT_EQ(8, my_max_heap->pop());
+    EXPECT_EQ(6, my_max_heap->pop());
+    EXPECT_EQ(5, my_max_heap->pop());
+    EXPECT_EQ(4, my_max_heap->pop());
+    EXPECT_EQ(3, my_max_heap->pop());
+    EXPECT_EQ(2, my_max_heap->pop());
+    EXPECT_EQ(2, my_max_heap->pop());
+    EXPECT_EQ(1, my_max_heap->pop());
   }
 
   TEST_F(MaxHeapFixture, ViewMax) {
@@ -109,9 +109,9 @@ namespace {
     EXPECT_EQ(9, my_max_heap->size()); //check size
     //View max repeatedly
     //my_max_heap->print_heap();
-    EXPECT_EQ(9, my_max_heap->view_extreme());
-    EXPECT_EQ(9, my_max_heap->view_extreme());
-    EXPECT_EQ(9, my_max_heap->view_extreme());
+    EXPECT_EQ(9, my_max_heap->front());
+    EXPECT_EQ(9, my_max_heap->front());
+    EXPECT_EQ(9, my_max_heap->front());
   }
 
   TEST_F(MaxHeapFixture, Insert) {
@@ -119,24 +119,24 @@ namespace {
     std::cout << "Heap before inserting:" << std::endl;
     //my_max_heap->print_heap();
     //Insert #1
-    my_max_heap->insert(4);
+    my_max_heap->push(4);
     std::cout << "Heap after inserting 4:" << std::endl;
     //my_max_heap->print_heap();
-    my_max_heap->insert(13);
+    my_max_heap->push(13);
     std::cout << "Heap after inserting 13:" << std::endl;
     //my_max_heap->print_heap();
     //Extract min#1
-    EXPECT_EQ(13, my_max_heap->extract_extreme());
-    EXPECT_EQ(9, my_max_heap->extract_extreme());
-    EXPECT_EQ(8, my_max_heap->extract_extreme());
-    EXPECT_EQ(6, my_max_heap->extract_extreme());
-    EXPECT_EQ(5, my_max_heap->extract_extreme());
-    EXPECT_EQ(4, my_max_heap->extract_extreme());
-    EXPECT_EQ(4, my_max_heap->extract_extreme());
-    EXPECT_EQ(3, my_max_heap->extract_extreme());
-    EXPECT_EQ(2, my_max_heap->extract_extreme());
-    EXPECT_EQ(2, my_max_heap->extract_extreme());
-    EXPECT_EQ(1, my_max_heap->extract_extreme());
+    EXPECT_EQ(13, my_max_heap->pop());
+    EXPECT_EQ(9, my_max_heap->pop());
+    EXPECT_EQ(8, my_max_heap->pop());
+    EXPECT_EQ(6, my_max_heap->pop());
+    EXPECT_EQ(5, my_max_heap->pop());
+    EXPECT_EQ(4, my_max_heap->pop());
+    EXPECT_EQ(4, my_max_heap->pop());
+    EXPECT_EQ(3, my_max_heap->pop());
+    EXPECT_EQ(2, my_max_heap->pop());
+    EXPECT_EQ(2, my_max_heap->pop());
+    EXPECT_EQ(1, my_max_heap->pop());
   }
 
   TEST_F(MinHeapFixture, ExtractMin) {
@@ -144,15 +144,15 @@ namespace {
     EXPECT_EQ(9, my_min_heap->size()); //check size
     //Extract min #1
     //my_min_heap->print_heap();
-    EXPECT_EQ(1, my_min_heap->extract_extreme());
-    EXPECT_EQ(2, my_min_heap->extract_extreme());
-    EXPECT_EQ(2, my_min_heap->extract_extreme());
-    EXPECT_EQ(3, my_min_heap->extract_extreme());
-    EXPECT_EQ(4, my_min_heap->extract_extreme());
-    EXPECT_EQ(5, my_min_heap->extract_extreme());
-    EXPECT_EQ(6, my_min_heap->extract_extreme());
-    EXPECT_EQ(8, my_min_heap->extract_extreme());
-    EXPECT_EQ(9, my_min_heap->extract_extreme());
+    EXPECT_EQ(1, my_min_heap->pop());
+    EXPECT_EQ(2, my_min_heap->pop());
+    EXPECT_EQ(2, my_min_heap->pop());
+    EXPECT_EQ(3, my_min_heap->pop());
+    EXPECT_EQ(4, my_min_heap->pop());
+    EXPECT_EQ(5, my_min_heap->pop());
+    EXPECT_EQ(6, my_min_heap->pop());
+    EXPECT_EQ(8, my_min_heap->pop());
+    EXPECT_EQ(9, my_min_heap->pop());
   }
 
   TEST_F(MinHeapFixture, ViewMin) {
@@ -160,9 +160,9 @@ namespace {
     EXPECT_EQ(9, my_min_heap->size()); //check size
     //View min repeatedly
     //my_min_heap->print_heap();
-    EXPECT_EQ(1, my_min_heap->view_extreme());
-    EXPECT_EQ(1, my_min_heap->view_extreme());
-    EXPECT_EQ(1, my_min_heap->view_extreme());
+    EXPECT_EQ(1, my_min_heap->front());
+    EXPECT_EQ(1, my_min_heap->front());
+    EXPECT_EQ(1, my_min_heap->front());
   }
 
   TEST_F(MinHeapFixture, Insert) {
@@ -170,24 +170,24 @@ namespace {
     std::cout << "Heap before inserting:" << std::endl;
     //my_min_heap->print_heap();
     //Insert #1
-    my_min_heap->insert(4);
+    my_min_heap->push(4);
     std::cout << "Heap after inserting 4:" << std::endl;
     //my_min_heap->print_heap();
-    my_min_heap->insert(13);
+    my_min_heap->push(13);
     std::cout << "Heap after inserting 13:" << std::endl;
     //my_min_heap->print_heap();
     //Extract min#1
-    EXPECT_EQ(1, my_min_heap->extract_extreme());
-    EXPECT_EQ(2, my_min_heap->extract_extreme());
-    EXPECT_EQ(2, my_min_heap->extract_extreme());
-    EXPECT_EQ(3, my_min_heap->extract_extreme());
-    EXPECT_EQ(4, my_min_heap->extract_extreme());
-    EXPECT_EQ(4, my_min_heap->extract_extreme());
-    EXPECT_EQ(5, my_min_heap->extract_extreme());
-    EXPECT_EQ(6, my_min_heap->extract_extreme());
-    EXPECT_EQ(8, my_min_heap->extract_extreme());
-    EXPECT_EQ(9, my_min_heap->extract_extreme());
-    EXPECT_EQ(13, my_min_heap->extract_extreme());
+    EXPECT_EQ(1, my_min_heap->pop());
+    EXPECT_EQ(2, my_min_heap->pop());
+    EXPECT_EQ(2, my_min_heap->pop());
+    EXPECT_EQ(3, my_min_heap->pop());
+    EXPECT_EQ(4, my_min_heap->pop());
+    EXPECT_EQ(4, my_min_heap->pop());
+    EXPECT_EQ(5, my_min_heap->pop());
+    EXPECT_EQ(6, my_min_heap->pop());
+    EXPECT_EQ(8, my_min_heap->pop());
+    EXPECT_EQ(9, my_min_heap->pop());
+    EXPECT_EQ(13, my_min_heap->pop());
   }
 }  // namespace
 
