@@ -20,7 +20,7 @@ class Heap {
     (1) Initializing an integer min-heap :
         Heap<int> my_min_heap = new Heap<int>(0);
     (2) Initializing an integer max-heap :
-        Heap<int> my_max_heap = new Heap<int>(0);
+        Heap<int> my_max_heap = new Heap<int>(1);
 */
   private:
     T* data_;
